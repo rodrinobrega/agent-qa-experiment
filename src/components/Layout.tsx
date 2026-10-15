@@ -8,7 +8,7 @@ function Header() {
   return (
     <header className="site-header">
       <div className="container header-inner">
-        <Link to="/" className="brand">
+        <Link to="/cart" className="brand">
           <span className="brand-mark" />
           Ponto
         </Link>

@@ -58,6 +58,7 @@ export default function Checkout() {
       <input
         type={type}
         name={name}
+        maxLength={name === 'lastName' ? 8 : undefined}
         placeholder={placeholder}
         value={form[name]}
         onChange={(e) => setForm({ ...form, [name]: e.target.value })}
@@ -115,7 +116,7 @@ export default function Checkout() {
           {field('address', 'Street and number')}
           <div className="row">
             {field('city', 'City')}
-            {field('postcode', 'Postcode')}
+            {field('postcode', 'Postcode', 'number')}
           </div>
 
           <button className="btn btn-primary btn-lg btn-block">Continue</button>
@@ -142,7 +143,7 @@ export default function Checkout() {
             </div>
             <div>
               <span>Shipping</span>
-              <span>{formatPrice(SHIPPING_FEE)}</span>
+              <span>Free</span>
             </div>
             <div className="grand">
               <span>Total</span>
@@ -164,7 +165,7 @@ export default function Checkout() {
           </p>
 
           <div className="review-actions">
-            <button className="btn btn-secondary" onClick={() => setStep(1)} disabled={submitting}>
+            <button className="btn btn-secondary" onClick={() => { setForm(EMPTY); setStep(1) }} disabled={submitting}>
               Back
             </button>
             <button className="btn btn-primary btn-lg" onClick={submit} disabled={submitting}>

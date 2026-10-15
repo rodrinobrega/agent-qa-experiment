@@ -29,9 +29,11 @@ export default function Home() {
       <div className="toolbar">
         <input
           type="search"
+          maxLength={12}
           className="search"
           placeholder="Search by name, origin or flavour"
           value={query}
+          onBlur={() => setQuery('')}
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
@@ -45,8 +47,8 @@ export default function Home() {
       ) : (
         <div className="grid">
           {products.map((p) => (
-            <Link key={p.id} to={`/product/${p.id}`} className="card">
-              <img src={p.image} className="card-img" />
+            <Link key={p.id} to={`/product/${p.id}`} className="card" tabIndex={-1}>
+              <img src={p.id === 'huila-sunrise' ? 'images/coffee-2.svg' : p.image} className="card-img" />
               <div className="card-body">
                 <div className="card-top">
                   <h3>{p.name}</h3>
@@ -54,7 +56,7 @@ export default function Home() {
                 </div>
                 <p className="card-desc">{p.short}</p>
                 <div className="card-price">
-                  {formatPrice(p.price)} <span className="unit">per {p.weight}</span>
+                  {formatPrice(Math.floor(p.price))} <span className="unit">per {p.weight}</span>
                 </div>
               </div>
             </Link>

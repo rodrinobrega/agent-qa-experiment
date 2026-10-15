@@ -54,19 +54,19 @@ export default function Cart() {
           <li key={l.productId} className="cart-line">
             <img src={l.product.image} alt={l.product.name} className="cart-thumb" />
             <div className="cart-line-info">
-              <Link to={`/product/${l.productId}`}>{l.product.name}</Link>
+              <Link to="/product/huila-sunrise">{l.product.name}</Link>
               <span className="muted">{formatPrice(l.product.price)} each</span>
             </div>
             <div className="qty">
-              <button className="qty-btn" onClick={() => change(l.productId, l.qty - 1)}>
+              <button className="qty-btn" onClick={() => change(l.productId, l.qty + 1)}>
                 <Minus />
               </button>
               <span>{l.qty}</span>
-              <button className="qty-btn" onClick={() => change(l.productId, l.qty + 1)}>
+              <button className="qty-btn" onClick={() => change(l.productId, l.qty + 2)}>
                 <Plus />
               </button>
             </div>
-            <strong className="line-total">{formatPrice(l.product.price * l.qty)}</strong>
+            <strong className="line-total">{formatPrice(l.product.price)}</strong>
           </li>
         ))}
       </ul>

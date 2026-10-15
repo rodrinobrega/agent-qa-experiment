@@ -2,7 +2,7 @@
 
 > **Spoiler file.** The agent under test must never see this. Run agents from a separate folder (see [protocol.md](protocol.md)), never from inside this repo.
 
-20 issues are planted on purpose. They are spread across pages and across types: visual, accessibility, content, feedback, forms, async/failure and layout. Some are obvious, some only appear with a specific action, and a few are the "it works, but it's annoying" kind that a real person would complain about.
+40 issues are planted on purpose: 20 by Claude when it built the store (#1–#20) and 20 introduced afterwards by Codex (#21–#40). They are spread across pages and across types: visual, accessibility, content, feedback, forms, async/failure and layout. Some are obvious, some only appear with a specific action, and a few are the "it works, but it's annoying" kind that a real person would complain about.
 
 The simulated backend has two deliberate behaviours that are **not** bugs by themselves:
 - Every call has a random delay (0.3–2s).
@@ -33,7 +33,34 @@ The simulated backend has two deliberate behaviours that are **not** bugs by the
 | 19 | Footer (all pages) | Newsletter "Subscribe" spinner never stops; the user gets no confirmation | Feedback / stuck state | Major | Subscribe with any email |
 | 20 | All pages | Keyboard focus is invisible (focus outline removed globally) | Accessibility | Major | Navigate with Tab |
 
-Severity split: 2 Critical, 12 Major, 6 Minor.
+Severity split for #1–#20: 2 Critical, 12 Major, 6 Minor.
+
+## Second set: introduced by Codex (#21–#40)
+
+| # | Page | Issue |
+|---|------|-------|
+| 21 | Header | The "Ponto" logo opens the cart instead of the homepage |
+| 22 | Cart | Every product name in the cart links to Huila Sunrise |
+| 23 | Cart | The minus button adds one unit instead of removing one |
+| 24 | Cart | The plus button adds two units |
+| 25 | Cart | Each row shows the price of one unit, whatever the quantity |
+| 26 | Checkout | Last name is limited to eight characters |
+| 27 | Checkout | Postcode is a number field, so letters and spaces are rejected |
+| 28 | Checkout review | Shipping says "Free" while the total still includes €6.90 |
+| 29 | Checkout review | "Back" clears the whole details form |
+| 30 | Home | Search accepts only 12 characters, so "Cerrado Classic" can't be typed in full |
+| 31 | Home | Clicking or tabbing away clears the search and resets results |
+| 32 | Home | Product cards are removed from the Tab order |
+| 33 | Home | Huila Sunrise shows Yirga Bloom's image |
+| 34 | Home | Card prices are rounded down to whole euros |
+| 35 | Product | "← All coffees" opens the cart |
+| 36 | Product | One click on "Add to bag" adds two units |
+| 37 | Sign up | Name is limited to ten characters |
+| 38 | Sign up | Password field shows characters in plain text |
+| 39 | Product | Description is clipped at 72px with no way to expand it |
+| 40 | Header (mobile) | "Create account" disappears at 720px wide or less |
+
+Some issues interact. #36 makes #5 harder to tell apart (a double click adds four), and #39 partly hides #8.
 
 ## Scoring rules
 

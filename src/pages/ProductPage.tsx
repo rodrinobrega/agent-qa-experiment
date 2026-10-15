@@ -27,7 +27,7 @@ export default function ProductPage() {
     <div className="detail">
       <img src={product.image} className="detail-img" />
       <div className="detail-info">
-        <Link to="/" className="back-link">
+        <Link to="/cart" className="back-link">
           ← All coffees
         </Link>
         <h1>{product.name}</h1>
@@ -40,7 +40,7 @@ export default function ProductPage() {
           ))}
         </ul>
         <p className="detail-price">{formatPrice(product.price)}</p>
-        <button className="btn btn-primary btn-lg" onClick={() => addToCart(product.id)}>
+        <button className="btn btn-primary btn-lg" onClick={() => addToCart(product.id, 2)}>
           Add to bag
         </button>
         <h2 className="detail-subtitle">About this coffee</h2>

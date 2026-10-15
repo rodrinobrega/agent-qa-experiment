@@ -60,7 +60,7 @@ export default function SignUp() {
       <form onSubmit={onSubmit}>
         <div className="field">
           <label htmlFor="su-name">Name</label>
-          <input id="su-name" required value={name} onChange={(e) => setName(e.target.value)} />
+          <input id="su-name" maxLength={10} required value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div className="field">
           <label htmlFor="su-email">Email</label>
@@ -70,7 +70,7 @@ export default function SignUp() {
           <label htmlFor="su-password">Password</label>
           <input
             id="su-password"
-            type="password"
+            type="text"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}

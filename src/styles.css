@@ -317,6 +317,8 @@ img {
 }
 .detail-desc {
   color: var(--ink-2);
+  max-height: 72px;
+  overflow: hidden;
 }
 
 /* Cart */
@@ -590,6 +592,9 @@ img {
 }
 
 @media (max-width: 720px) {
+  .main-nav a[href="#/signup"] {
+    display: none;
+  }
   .detail {
     grid-template-columns: 1fr;
     gap: 24px;
